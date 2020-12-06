@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions
 import json
 
-client = commands.Bot(command_prefix=".")
+client = commands.Bot(command_prefix=">")
 token = "Put your bot token here"
 client.remove_command('help')
 
@@ -20,13 +20,13 @@ async def help(ctx):
         title = "Help",
         color = discord.Color.dark_red()
     )
-    em.add_field(name="addjob", value="Run this command to add a new job/bounty to the dashboard [.addjob | .aj]",inline=False)
-    em.add_field(name="displayjobs", value="Run this command to display all jobs, even if they've been completed [.displayjobs | .dj]",inline=False)
-    em.add_field(name="displayavailable", value="Run this command to display all jobs that haven't been done. [.displayavailable | .da]",inline=False)
-    em.add_field(name="displayfinished", value="Run this command to display all jobs that have been done. [.displayfinished | .df]",inline=False)
-    em.add_field(name="jobinfo", value="Run this command to only see a single job specified [.jobinfo <title of job> | .ji <title of job>]",inline=False)
-    em.add_field(name="finishjob", value="Run this command to mark a job as finished [.finishjob <title of job> | .fj <title of job>]",inline=False)
-    em.add_field(name="revertfinishedjob", value="Run this command to unmark a job as finished [.revertfinishedjob <title of job> | .rfj]",inline=False)
+    em.add_field(name="addjob", value="Run this command to add a new job/bounty to the dashboard [>addjob | >aj]",inline=False)
+    em.add_field(name="displayjobs", value="Run this command to display all jobs, even if they've been completed [>displayjobs | >dj]",inline=False)
+    em.add_field(name="displayavailable", value="Run this command to display all jobs that haven't been done. [>displayavailable | >da]",inline=False)
+    em.add_field(name="displayfinished", value="Run this command to display all jobs that have been done. [>displayfinished | >df]",inline=False)
+    em.add_field(name="jobinfo", value="Run this command to only see a single job specified [>jobinfo <title of job> | >ji <title of job>]",inline=False)
+    em.add_field(name="finishjob", value="Run this command to mark a job as finished [>finishjob <title of job> | >fj <title of job>]",inline=False)
+    em.add_field(name="revertfinishedjob", value="Run this command to unmark a job as finished [>revertfinishedjob <title of job> | >rfj]",inline=False)
     em.set_footer(icon_url = ctx.author.avatar_url, text = f"Requested by {ctx.author.name}")
     await ctx.send(embed = em)
 
@@ -221,7 +221,7 @@ async def on_command_error(ctx,error):
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=".help | Developed by Impact#1704"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=">help | Developed by Impact#1704"))
     print("Bot is online")
 
 client.run(token)
